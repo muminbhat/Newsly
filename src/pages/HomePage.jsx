@@ -5,6 +5,7 @@ import NewsCards from '../components/NewsCards'
 const HomePage = () => {
   return (
     <>
+    
     <Hero />
     <NewsCards />
     </>
