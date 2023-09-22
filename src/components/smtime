@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import key from "../api/key";
-const swal = require('sweetalert2')
 
 const NewsCards = ({ category }) => {
   const [articles, setArticles] = useState([]);
@@ -11,7 +10,7 @@ const NewsCards = ({ category }) => {
     setLoading(true);
     setArticles([]);
     const api = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${key}`;
-    
+
     const fetchData = async () => {
       try {
         const res = await axios.get(api); // Use axios.get instead of axios.request
@@ -21,17 +20,8 @@ const NewsCards = ({ category }) => {
       } catch (err) {
         console.error("Error fetching data:", err);
         setLoading(false);
-        swal.fire({
-          title: 'Something Went Wrong',
-          icon: "error",
-          toast: true,
-          timer: 6000,
-          position: 'top-right',
-          timerProgressBar: false,
-          showConfirmButton: false,
-      })
-    }
-  };
+      }
+    };
 
     fetchData();
   }, [category]);
