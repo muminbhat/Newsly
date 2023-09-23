@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import key from "../api/key";
 import PropagateLoader from 'react-spinners/PropagateLoader'
+import secondKey from "../api/secondKey";
+
 const swal = require("sweetalert2");
 
 const NewsCards = ({ category }) => {
@@ -12,7 +14,7 @@ const NewsCards = ({ category }) => {
   useEffect(() => {
     setLoading(true);
     setArticles([]);
-    const api = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${key}`;
+    const api = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${secondKey}`;
 
     const fetchData = async () => {
       try {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import key from "../api/key";
+import secondKey from "../api/secondKey";
 import PropagateLoader from 'react-spinners/PropagateLoader'
 const swal = require("sweetalert2");
 
@@ -18,7 +19,7 @@ const Search = ({search}) => {
     
           setLoading(true);
           setArticles([]);
-          const api = `https://gnews.io/api/v4/search?q=${search}&apikey=${key}`; 
+          const api = `https://gnews.io/api/v4/search?q=${search}&apikey=${secondKey}`; 
     
           try {
             const res = await axios.get(api);
