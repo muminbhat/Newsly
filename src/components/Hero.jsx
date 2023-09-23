@@ -253,8 +253,7 @@ const Hero = () => {
         </div>
       </div>
       <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-      <NewsCards key={category} category={category} />
-      <Search search={searchQuery} />
+      <NewsCards key={category} category={category} search={search} />
       {/* End Hero */}
     </>
   );

@@ -1,27 +1,29 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import key from "../api/key";
-import PropagateLoader from 'react-spinners/PropagateLoader'
+import PropagateLoader from "react-spinners/PropagateLoader";
 import secondKey from "../api/secondKey";
-
 const swal = require("sweetalert2");
 
-const NewsCards = ({ category }) => {
+const NewsCards = ({ category, search }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
-    setLoading(true);
-    setArticles([]);
-    const api = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${secondKey}`;
-
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const res = await axios.get(api); // Use axios.get instead of axios.request
+        let apiUrl = "";
+        
+        if (search) {
+          apiUrl = `https://gnews.io/api/v4/search?q=${search}&apikey=${secondKey}`;
+        } else {
+          apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&category=${category}&apikey=${key}`;
+        }
+        
+        const res = await axios.get(apiUrl);
         setArticles(res.data.articles);
         setLoading(false);
-        console.log(res.data.articles);
       } catch (err) {
         console.error("Error fetching data:", err);
         setLoading(false);
@@ -38,7 +40,7 @@ const NewsCards = ({ category }) => {
     };
 
     fetchData();
-  }, [category]);
+  }, [category, search]);
 
   return (
     <>
