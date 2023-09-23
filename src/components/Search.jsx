@@ -1,43 +1,47 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import key from "../api/key";
 import PropagateLoader from 'react-spinners/PropagateLoader'
 const swal = require("sweetalert2");
 
-const NewsCards = ({ category }) => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-
-  useEffect(() => {
-    setLoading(true);
-    setArticles([]);
-    const api = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${key}`;
-
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(api); // Use axios.get instead of axios.request
-        setArticles(res.data.articles);
-        setLoading(false);
-        console.log(res.data.articles);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        setLoading(false);
-        swal.fire({
-          title: "Something Went Wrong",
-          icon: "error",
-          toast: true,
-          timer: 6000,
-          position: "top-right",
-          timerProgressBar: false,
-          showConfirmButton: false,
-        });
-      }
-    };
-
-    fetchData();
-  }, [category]);
-
+const Search = ({search}) => {
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(false);
+    console.log(search)
+  
+    useEffect(() => {
+        // Create a separate function to handle the API request
+        const fetchSearchResults = async () => {
+          if (!search) {
+            return;
+          }
+    
+          setLoading(true);
+          setArticles([]);
+          const api = `https://gnews.io/api/v4/search?q=${search}&apikey=${key}`; 
+    
+          try {
+            const res = await axios.get(api);
+            setArticles(res.data.articles);
+            setLoading(false);
+            console.log(res.data.articles);
+          } catch (err) {
+            console.error("Error fetching data:", err);
+            setLoading(false);
+            swal.fire({
+              title: "Something Went Wrong",
+              icon: "error",
+              toast: true,
+              timer: 6000,
+              position: "top-right",
+              timerProgressBar: false,
+              showConfirmButton: false,
+            });
+          }
+        };
+    
+        fetchSearchResults(); // Call the function when search changes
+      }, [search]); // Add search as a dependency    
   return (
     <>
       {loading ? (
@@ -119,4 +123,4 @@ const NewsCards = ({ category }) => {
   );
 };
 
-export default NewsCards;
+export default Search

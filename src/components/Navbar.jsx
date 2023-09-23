@@ -1,5 +1,6 @@
 import React from 'react'
 import DarkModeSwitcher from './DarkModeSwitcher'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -9,9 +10,9 @@ const Navbar = () => {
     aria-label="Global"
   >
     <div className="flex items-center justify-between">
-      <a className="flex-none text-xl font-semibold dark:text-white" href="#">
+      <Link to="/" className="flex-none text-xl font-semibold dark:text-white">
         <span>Newsly</span>
-      </a>
+      </Link>
       <div className="sm:hidden">
         <button
           type="button"
