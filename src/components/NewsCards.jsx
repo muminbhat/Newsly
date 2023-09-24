@@ -22,9 +22,9 @@ const NewsCards = () => {
       let apiUrl = "";
 
       if (search) {
-        apiUrl = `https://gnews.io/api/v4/search?q=${search}&apikey=${secondKey}`;
+        apiUrl = `https://gnews.io/api/v4/search?q=${search}&sortby=publishedAt&lang=en&apikey=${secondKey}`;
       } else {
-        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&category=${category}&apikey=${key}`;
+        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&sortby=publishedAt&lang=en&category=${category}&apikey=${key}`;
       }
 
       const res = await axios.get(apiUrl);
@@ -90,6 +90,13 @@ const NewsCards = () => {
                       placeholder="Whats happening in the world?"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          handleSearch();
+                          e.target.blur();
+                        }
+                      }}
                     />
                   </div>
                   <div className="flex-[0_0_auto]">
@@ -337,6 +344,9 @@ const NewsCards = () => {
                         <span className="text-gray-500 underline">
                           {article.source.name}
                         </span>
+                        <p>
+                          {article.publishedAt.slice(0,10)+ ' • ' +article.publishedAt.slice(12,19)}
+                        </p>
                       </p>
                     </a>
                   </div>
