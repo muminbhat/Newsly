@@ -3,6 +3,7 @@ import axios from "axios";
 import key from "../api/key";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import secondKey from "../api/secondKey";
+import thirdKey from "../api/thirdKey";
 const swal = require("sweetalert2");
 
 const NewsCards = () => {
@@ -22,9 +23,9 @@ const NewsCards = () => {
       let apiUrl = "";
 
       if (search) {
-        apiUrl = `https://gnews.io/api/v4/search?q=${search}&sortby=publishedAt&lang=en&apikey=${secondKey}`;
+        apiUrl = `https://gnews.io/api/v4/search?q=${search}&sortby=publishedAt&lang=en&apikey=${thirdKey}`;
       } else {
-        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&sortby=publishedAt&lang=en&category=${category}&apikey=${key}`;
+        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&sortby=publishedAt&lang=en&category=${category}&apikey=${thirdKey}`;
       }
 
       const res = await axios.get(apiUrl);
