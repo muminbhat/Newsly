@@ -31,6 +31,7 @@ const NewsCards = () => {
       const res = await axios.get(apiUrl);
       setArticles(res.data.articles);
       setLoading(false);
+      setSearch("")
     } catch (err) {
       console.error("Error fetching data:", err);
       setLoading(false);
@@ -52,6 +53,7 @@ const NewsCards = () => {
   };
 
   useEffect(() => {
+    setArticles([]);
     // Fetch data initially based on the category prop
     fetchData();
   }, [category]); // This effect runs whenever the category prop changes
