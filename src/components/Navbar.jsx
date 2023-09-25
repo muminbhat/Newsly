@@ -55,16 +55,15 @@ const Navbar = () => {
         </Link>
         <a
           className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-          href="#"
+          href="https://muminbhat.com" target='blank'
         >
           Services
         </a>
-        <a
+        <Link to={"/about"}
           className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-          href="#"
         >
           About
-        </a>
+        </Link>
         <a
           className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
           href="#"
