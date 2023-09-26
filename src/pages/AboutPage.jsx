@@ -78,14 +78,14 @@ const AboutPage = () => {
                         <img
                           className="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
                           src={bhatmumin}
-                          alt="Image Description"
+                          alt="Mumin Bhat"
                         />
                       </figure>
                       <figure className="relative w-full h-60">
                         <img
                           className="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
                           src={mumin}
-                          alt="Image Description"
+                          alt="Mumin Bhat"
                         />
                       </figure>
                     </div>
@@ -93,7 +93,7 @@ const AboutPage = () => {
                       <img
                         className="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
                         src={muminbhat}
-                        alt="Image Description"
+                        alt="Mumin Bhat"
                       />
                     </figure>
                   </div>

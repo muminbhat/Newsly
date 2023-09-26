@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage'
 import Navbar from './components/Navbar'
 import AboutPage from './pages/AboutPage';
+import Footer from './components/Footer';
+import Maintenance from './pages/Maintenance';
+import NoPage from './pages/404';
 
 const App = () => {
   return (
@@ -12,7 +15,11 @@ const App = () => {
     <Routes>
     <Route path='/' element={<HomePage/>} />
     <Route path='/about' element={<AboutPage />} />
+    <Route path="*" element={<NoPage />} />
+    <Route path="/maintenance" element={<Maintenance />} />
+
     </Routes>
+    <Footer />
     </BrowserRouter>
     </>
   )
