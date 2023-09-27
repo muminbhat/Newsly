@@ -338,13 +338,13 @@ const NewsCards = () => {
                     </a>
                   </h2>
                   {/* Description */}
-                  <p>{article.description}</p>
+                  <p className="mt-5 text-md text-gray-800 dark:text-gray-200">{article.description}</p>
                   {/* Avatar */}
                   <div className="mt-6 sm:mt-10 flex items-center">
                     <a target="blank" href={article.source.url}>
-                      <p className="text-xs text-gray-800">
+                      <p className="text-xs mt-5 text-gray-800 dark:text-gray-200">
                         Source:{" "}
-                        <span className="text-gray-500 underline">
+                        <span className="underline text-gray-800 dark:text-gray-200">
                           {article.source.name}
                         </span>
                         <p>
