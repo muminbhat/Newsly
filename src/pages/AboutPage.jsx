@@ -259,7 +259,7 @@ const AboutPage = () => {
               {/* End Avatar Media */}
               <div className="space-y-6">
                 {/* Media */}
-                <h2 className="text-md text-black-800 dark:text-black-200">
+                <h2 className="text-md text-black-800 dark:text-gray-200">
                   Discover more of my projects and blog posts!
                 </h2>
                 <a
