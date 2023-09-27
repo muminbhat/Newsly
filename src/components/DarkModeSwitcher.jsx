@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 const DarkModeSwitcher = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
     return (
         <>
       <a
         className="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
-        href="#!"
         data-hs-theme-click-value="dark"
+        onClick={toggleDarkMode}
       >
         <svg
           className="w-4 h-4"
@@ -21,8 +35,8 @@ const DarkModeSwitcher = () => {
       </a>
       <a
         className="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
-        href="#!"
         data-hs-theme-click-value="light"
+        onClick={toggleDarkMode}
       >
         <svg
           className="w-4 h-4"

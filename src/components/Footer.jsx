@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer>
         <hr />
@@ -15,6 +17,7 @@ const Footer = () => {
         >
           Newsly
         </Link>
+        <p className='text-gray-400 text-sm'>{currentYear} © copyrights. <a href="https://muminbhat.com" target='blank'><span className='text-blue-500 '>Mumin Bhat </span></a></p>
       </div>
       {/* End Col */}
       <ul className="text-center">

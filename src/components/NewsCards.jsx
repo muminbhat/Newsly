@@ -23,9 +23,9 @@ const NewsCards = () => {
       let apiUrl = "";
 
       if (search) {
-        apiUrl = `https://gnews.io/api/v4/search?q=${search}&sortby=publishedAt&lang=en&apikey=${thirdKey}`;
+        apiUrl = `https://gnews.io/api/v4/search?q=${search}&sortby=publishedAt&lang=en&apikey=${secondKey}`;
       } else {
-        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&sortby=publishedAt&lang=en&category=${category}&apikey=${thirdKey}`;
+        apiUrl = `https://gnews.io/api/v4/top-headlines?country=us&sortby=publishedAt&lang=en&category=${category}&apikey=${key}`;
       }
 
       const res = await axios.get(apiUrl);
