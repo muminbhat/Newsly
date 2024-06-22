@@ -4,11 +4,12 @@ import key from "../api/key";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import secondKey from "../api/secondKey";
 import thirdKey from "../api/thirdKey";
+import { Link } from "react-router-dom";
 const swal = require("sweetalert2");
 
 const NewsCards = () => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("general");
   const [search, setSearch] = useState("");
 
@@ -342,13 +343,12 @@ const NewsCards = () => {
                 {/* End Col */}
                 <div className="sm:order-1 lg:mb-20 md:mb-20">
                   <h2 className="text-2xl font-bold md:text-2xl lg:text-2xl lg:leading-tight xl:text-3xlxl:leading-tight text-gray-800 dark:text-gray-200">
-                    <a
-                      target="_blank"
+                    <Link
                       className="hover:text-blue-600 dark:text-gray-300 dark:hover:text-white"
-                      href={article.url}
+                      to={"/news/" + encodeURIComponent(article.url)}
                     >
                       {article.title}
-                    </a>
+                    </Link>
                   </h2>
                   {/* Description */}
                   <p className="mt-5 text-md text-gray-800 dark:text-gray-200">
@@ -356,7 +356,7 @@ const NewsCards = () => {
                   </p>
                   {/* Avatar */}
                   <div className="mt-6 sm:mt-10 flex items-center">
-                    <a target="blank" href={article.source.url}>
+                    <a target="blank" href={article.url}>
                       <p className="text-xs mt-5 text-gray-800 dark:text-gray-200">
                         Source:{" "}
                         <span className="underline text-gray-800 dark:text-gray-200">
@@ -372,9 +372,9 @@ const NewsCards = () => {
                   </div>
                   {/* End Avatar */}
                   <div className="mt-5">
-                    <a
+                    <Link
                       className="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
-                      href={article.url}
+                      to={"/news/" + encodeURIComponent(article.url)}
                     >
                       Read more
                       <svg
@@ -391,7 +391,7 @@ const NewsCards = () => {
                           strokeLinecap="round"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 {/* End Col */}
@@ -419,7 +419,6 @@ const NewsCards = () => {
           )
         )}
       </div>
-      
     </>
   );
 };
